@@ -1,0 +1,14 @@
+python-telegram-bot[socks]
+aiomysql
+sqlalchemy
+pytz
+requests
+python-dotenv
+cryptography
+apscheduler
+httpx
+aiohttp
+socksio
+greenlet
+aiohttp-socks
+python-socks[asyncio]
