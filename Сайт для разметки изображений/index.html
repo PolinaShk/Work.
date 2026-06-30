@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Annotation Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#about">О нас</a></li>
+                <li class="nav-item"><a href="#info">Информация</a></li>
+                <li class="nav-item"><a href="#product">Разметка изображений</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="about">
+        <h2 class="about__title">О нас</h2>
+        <p class="about__text">Мы — команда профессионалов, стремящихся предоставить лучшие решения для разметки изображений. Наш инструмент предназначен для создания датасетов и аннотирования изображений.</p>
+    </section>
+
+    <section id="info" class="info">
+        <h2 class="info__title">Информация</h2>
+        <p class="info__text">Данный проект разрабатывается как web-сервис для разметки изображений и дальнейшего экспорта. Сервис позволяет загружать папку с изображениями, выделять области с помощью различных инструментов и сохранять аннотации.</p>
+        <div class="info__references">
+            <h3 class="info__references-title">Ссылки на литературу:</h3>
+            <ul class="info__references-list">
+                <li class="info__reference-item"><a href="https://developer.mozilla.org/ru/docs/Web/API/Canvas_API" class="info__reference-link" target="_blank">Canvas API</a></li>
+                <li class="info__reference-item"><a href="https://www.makesense.ai/" class="info__reference-link" target="_blank">Вдохновение</a></li>
+                <li class="info__reference-item"><a href="https://habr.com/ru/companies/data_light/articles/852848/" class="info__reference-link" target="_blank">В возможных планах</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <div id="product" class="annotation-tool">
+        <h1 class="annotation-tool__title">Инструмент разметки изображений</h1>
+        
+        <div class="annotation-tool__controls">
+            <div class="upload-section">
+                <div class="upload-option">
+                    <input type="radio" id="single-image" name="upload-type" checked>
+                    <label for="single-image">Одно изображение</label>
+                </div>
+                <div class="upload-option">
+                    <input type="radio" id="multiple-images" name="upload-type">
+                    <label for="multiple-images">Папка с изображениями</label>
+                </div>
+                
+                <div class="file-inputs">
+                    <input type="file" id="single-upload" accept="image/*" class="file-input">
+                    <input type="file" id="folder-upload" accept="image/*" multiple webkitdirectory directory style="display: none;" class="file-input">
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="tool-row">
+                    <label for="tool-type">Инструмент:</label>
+                    <select id="tool-type" class="tool-select">
+                        <option value="rectangle">Прямоугольник (рамка)</option>
+                        <option value="circle">Круг</option>
+                        <option value="freehand">Произвольная область</option>
+                    </select>
+                    
+                    <input type="color" id="annotation-color" value="#ff0000" title="Цвет контура">
+                    <input type="color" id="bg-color" value="#00ff00" title="Цвет заливки">
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="save-cropped" checked>
+                        <label for="save-cropped">Сохранять выделенные фрагменты</label>
+                    </div>
+                </div>
+                
+                <div class="tool-row">
+                    <div class="zoom-controls">
+                        <button id="zoom-in" class="zoom-btn">+</button>
+                        <button id="zoom-out" class="zoom-btn">-</button>
+                        <button id="zoom-reset" class="zoom-btn">100%</button>
+                        <span id="zoom-level">100%</span>
+                    </div>
+                    
+                    <button id="clear-annotation" class="control-btn">Очистить</button>
+                    <button id="next-image" class="control-btn" style="display: none;">Следующее</button>
+                    <button id="save-annotation" class="control-btn save-btn">💾 Сохранить разметку</button>
+                    <button id="export-all" class="control-btn export-btn">📦 Экспорт всех</button>
+                    <button id="test-coords" class="control-btn" style="background-color: #ff9800;">🧪 Тест координат</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="annotation-tool__preview">
+            <div class="canvas-container">
+                <canvas id="annotation-canvas"></canvas>
+                <div id="canvas-overlay" class="canvas-overlay"></div>
+            </div>
+            
+            <div class="info-panel">
+                <div class="current-image-info">
+                    <h3>Текущее изображение:</h3>
+                    <p id="current-file-name">-</p>
+                </div>
+                
+                <div class="annotation-info">
+                    <h3>Разметка:</h3>
+                    <p>X: <span id="annotation-x">0</span></p>
+                    <p>Y: <span id="annotation-y">0</span></p>
+                    <p>Ширина: <span id="annotation-width">0</span></p>
+                    <p>Высота: <span id="annotation-height">0</span></p>
+                </div>
+                
+                <div class="progress-info" style="display: none;">
+                    <h3>Прогресс:</h3>
+                    <p>Обработано: <span id="processed-count">0</span> / <span id="total-count">0</span></p>
+                    <progress id="progress-bar" value="0" max="100"></progress>
+                </div>
+
+                <!-- Краткое руководство -->
+                <div class="quick-guide">
+                    <h3>📚 Краткое руководство:</h3>
+                    <ul class="guide-list">
+                        <li><strong>Загрузка:</strong> выберите "Папка с изображениями" → укажите папку</li>
+                        <li><strong>Инструменты:</strong> прямоугольник, круг, произвольная область</li>
+                        <li><strong>Рисование:</strong> зажмите левую кнопку мыши и тяните</li>
+                        <li><strong>💾 Сохранить разметку:</strong> сохраняет JSON и фрагменты</li>
+                        <li><strong>Очистить:</strong> удаляет текущую разметку</li>
+                        <li><strong>Следующее:</strong> переход к следующему изображению</li>
+                        <li><strong>📦 Экспорт всех:</strong> сохраняет все разметки сразу</li>
+                        <li><strong>➕/➖:</strong> масштабирование изображения</li>
+                        <li><strong>🧪 Тест координат:</strong> проверка системы координат</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,688 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Хедер и навигация */
+.header {
+    background-color: #4CAF50;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-item a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Секции "О нас" и "Информация" */
+.about, .info {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    max-width: 800px;
+    margin: 30px auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about__title, .info__title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+.about__text, .info__text {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Ссылки на литературу */
+.info__references {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #4CAF50;
+}
+
+.info__references-title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.info__references-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info__reference-item {
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.info__reference-item:hover {
+    background-color: #f0f0f0;
+}
+
+.info__reference-link {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: block;
+}
+
+.info__reference-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    padding-left: 5px;
+}
+
+/* Основной инструмент аннотации */
+.annotation-tool {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+.annotation-tool__title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #4CAF50;
+}
+
+/* Панель управления */
+.annotation-tool__controls {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #e9ecef;
+}
+
+/* Загрузка изображений */
+.upload-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.upload-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.upload-option label {
+    cursor: pointer;
+    font-weight: bold;
+    color: #555;
+}
+
+.upload-option input[type="radio"] {
+    accent-color: #4CAF50;
+}
+
+.file-inputs {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.file-input {
+    padding: 8px 15px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.file-input:hover {
+    background-color: #f0f9f0;
+    border-color: #45a049;
+}
+
+/* Инструменты рисования */
+.tool-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 15px;
+}
+
+.tool-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.tool-select {
+    padding: 8px 15px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    min-width: 180px;
+}
+
+.tool-select:focus {
+    outline: none;
+    border-color: #45a049;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+input[type="color"] {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 2px;
+    background: white;
+}
+
+input[type="color"]:hover {
+    border-color: #4CAF50;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #4CAF50;
+}
+
+.checkbox-group label {
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Управление масштабом */
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.zoom-btn {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s;
+    min-width: 40px;
+}
+
+.zoom-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#zoom-level {
+    font-weight: bold;
+    min-width: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Кнопки управления */
+.control-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.control-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.save-btn {
+    background-color: #28a745;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+.export-btn {
+    background-color: #17a2b8;
+}
+
+.export-btn:hover {
+    background-color: #138496;
+}
+
+#clear-annotation {
+    background-color: #dc3545;
+}
+
+#clear-annotation:hover {
+    background-color: #c82333;
+}
+
+#next-image {
+    background-color: #17a2b8;
+}
+
+#next-image:hover {
+    background-color: #138496;
+}
+
+/* Основная область просмотра */
+.annotation-tool__preview {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* Контейнер канваса */
+.canvas-container {
+    flex: 3;
+    position: relative;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+#annotation-canvas {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: crosshair;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+.canvas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Информационная панель */
+.info-panel {
+    flex: 1;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    border: 2px solid #ddd;
+    min-width: 250px;
+    min-height: 400px;
+}
+
+.current-image-info, .annotation-info, .progress-info {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.current-image-info h3, .annotation-info h3, .progress-info h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+#current-file-name {
+    font-weight: bold;
+    color: #4CAF50;
+    word-break: break-all;
+    padding: 8px;
+    background-color: #f0f9f0;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.annotation-info p {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.annotation-info p:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.annotation-info span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.progress-info {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress-bar::-webkit-progress-bar {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+#progress-bar::-webkit-progress-value {
+    background-color: #4CAF50;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+#progress-bar::-moz-progress-bar {
+    background-color: #4CAF50;
+    border-radius: 10px;
+}
+
+#processed-count {
+    font-weight: bold;
+    color: #28a745;
+}
+
+#total-count {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Стили для руководства */
+.quick-guide {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    border-left: 4px solid #2196F3;
+}
+
+.quick-guide h3 {
+    color: #1976d2;
+    margin-bottom: 15px;
+    font-size: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #bbdefb;
+}
+
+.guide-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.guide-list li {
+    margin-bottom: 8px;
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 13px;
+    color: #333;
+    border-bottom: 1px dashed #bbdefb;
+}
+
+.guide-list li:last-child {
+    border-bottom: none;
+}
+
+.guide-list li::before {
+    content: "•";
+    color: #2196F3;
+    font-weight: bold;
+    position: absolute;
+    left: 5px;
+}
+
+.guide-list li strong {
+    color: #1976d2;
+    margin-right: 5px;
+}
+
+/* Отладочная информация */
+.debug-info {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.debug-info strong {
+    color: #4CAF50;
+}
+
+/* Инструкция по проверке */
+.check-instruction {
+    background-color: #e8f5e9;
+    border: 1px solid #4caf50;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.check-instruction strong {
+    color: #2e7d32;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.annotation-tool {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.save-btn:active, .export-btn:active {
+    animation: pulse 0.3s ease;
+}
+
+/* Стили для скроллбара */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Стили для фокуса */
+:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+/* Стили для placeholder */
+::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .annotation-tool__preview {
+        flex-direction: column;
+    }
+    
+    .canvas-container {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .info-panel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .tool-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .zoom-controls {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .file-inputs {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .about, .info, .annotation-tool {
+        margin: 15px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .annotation-tool__title {
+        font-size: 22px;
+    }
+    
+    .tool-select {
+        min-width: 150px;
+    }
+    
+    .control-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+    
+    .canvas-container {
+        min-height: 300px;
+    }
+}
